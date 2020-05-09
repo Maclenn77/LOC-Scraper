@@ -37,7 +37,7 @@ while set_menu == true
   space
   puts '>> What do you want to do?'
   space
-  puts (' ' * 5) + 'a) Check a set b) Exit '
+  puts '     a) Check a set b) Exit '
   choice = gets.chomp.downcase
   if choice == 'a'
     puts '>> Write the name of the set:'

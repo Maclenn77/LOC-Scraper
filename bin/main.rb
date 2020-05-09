@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
-require_relative '../lib/scraper'
+require 'pry'
+require_relative '../lib/sets_creator'
 require_relative '../lib/imgsets'
+
+binding.pry
 
 # Output functions
 bar_start = '*'.center(80, '*')

@@ -1,10 +1,9 @@
-require 'pry'
 require 'open-uri'
 require 'nokogiri'
 
 module Scraper
   # Take loc url and create an analizable document
-  TAKE_SETS = /(?<=[[:punct:]]\s).*/.freeze
+  GET_SET_NAMES = /(?<=[[:punct:]]\s).*/
 
   def parse_loc
     html = open('https://www.loc.gov/free-to-use/').read
@@ -21,15 +20,12 @@ module Scraper
 
   # Returns the size of all image sets
   def imgsets_size
-    parse_loc.xpath('//strong').length
+    parse_loc.length
   end
 
-  # def get_set_names
-  #   names = {}
-  #   length = set_size
-  #   for i in (1..length)
-  #     names[]
-  #
-  # end
+  def get_set_names
+    set_names = parse_loc.xpath('//strong').to_a
+    set_names = set_names.map { |i| GET_SET_NAMES.match(i).to_s }
+    set_names
+  end
 end
-binding.pry

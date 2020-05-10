@@ -1,13 +1,13 @@
 require_relative 'scraper'
 
 class SetsCreator
-  attr_reader :sets, :doc
+  attr_reader :sets, :doc, :urls
   include Scraper
 
   def initialize
     @doc = parsing('https://www.loc.gov/free-to-use/')
     @sets = names(@doc)
-    @urls = urls(@doc)
+    @urls = urls_array(@doc)
   end
 
   def validate(choice, object)
@@ -19,16 +19,16 @@ class SetsCreator
   end
 
   def check_url(set)
-    url_index = set - 1
+    url_index = set.to_i - 1
     @urls[url_index]
   end
 
   def check_name(set)
-    name_index = set - 1
+    name_index = set.to_i - 1
     @sets[name_index]
   end
 
   def check_set_size(doc)
-    doc.doc.xpath('//figure//img').length
+    doc.xpath('//figure//img').length
   end
 end

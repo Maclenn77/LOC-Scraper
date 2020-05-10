@@ -1,14 +1,13 @@
 require_relative 'scraper'
 
 class ImgSet < SetsCreator
-  attr_reader :name, :url, :total_elements
-  attr_accessor :elements
+  attr_accessor :name, :url, :total_images, :elements
 
-  def initialize(set)
-    doc = parsing(check_url(set))
+  def initialize(set, object)
+    doc = parsing(object.check_url(set))
     @total_images = check_set_size(doc)
-    @set_url = check_url(set)
-    @name = check_name(set)
+    @url = object.check_url(set)
+    @name = object.check_name(set)
     @elements = {}
     range_elements = (0...@total_images)
     range_elements.each do |i|

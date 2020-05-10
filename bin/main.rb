@@ -9,7 +9,9 @@ class Nokogiri::HTML::Document
 end
 
 # Output functions
-bar_start = '*'.center(80, '*')
+def bar_start
+puts '*'.center(80, '*')
+end
 
 def space
   puts "\n"
@@ -39,15 +41,71 @@ def display(object)
   end
 end
 
+def display_set(object)
+  bar_start
+  puts ' ' * 10 + "- Set name: #{object.name}"
+  space
+  puts ' ' * 10 + "- Set url: #{object.url}"
+  space
+  puts ' ' * 10 + "- Number of images: #{object.total_images}"
+  space
+  bar_start
+end
+
+def check_image(option, set)
+  if option = 'a'
+    until choice == 0
+      puts "Enter a number (from 1 to #{set.total_images} or 'exit')"
+      choice = gets.chomp.to_i
+      choice -= 1
+      bar_start
+      puts ' ' * 10 + "- Description: #{set.elements[choice][0]}"
+      bar_start
+    end
+  elsif option == 'b'
+    until choice == 0
+      puts "Enter a number (from 1 to #{set.total_images} or 'exit')"
+      choice = gets.chomp.to_i
+      choice -= 1
+      bar_start
+      puts ' ' * 10 + "- Url: #{set.elements[choice][1]}"
+      bar_start
+    end
+  elsif option == 'c'
+    until choice == 0
+      puts "Enter a number (from 1 to #{set.total_images} or 'exit')"
+      choice = gets.chomp.to_i
+      choice -= 1
+      bar_start
+      puts ' ' * 10 + "- Url: #{set.elements[choice][0]}"
+      puts ' ' * 10 + "- Url: #{set.elements[choice][1]}"
+      bar_start
+    end
+  else
+
+    puts
+end
+
+def explore_set(answer, set)
+  if answer == 'y'
+    puts '>> What do you want to do?'
+    puts 'a) Check a description b) Check a url c) Check all images'.center(80, ' ')
+    option = gets.chomp.downcase
+  else
+    puts 'Displaying menu again'
+  end
+end
+
+
 # Start user interface
-puts bar_start
+bar_start
 puts 'Library of Congress'.center(80, ' ')
 space
 puts ' S C R A P E R'.center(80, ' ')
 puts 'of'.center(80, ' ')
 puts 'IMAGE SETS'.center(80, ' ')
 space
-puts bar_start
+bar_start
 space
 puts 'Wait a minute. Scraping the Library of Congress...'
 space
@@ -63,8 +121,9 @@ while set_menu == true
   if choice == 'a'
     puts ">> Write the index of the set (from 1 to #{img_sets.imgsets_size(img_sets.doc)}):"
     choice = gets.chomp
-    set = ImgSet.new(choice)
-    binding.pry
+    set = ImgSet.new(choice, img_sets)
+    display_set(set)
+    puts 'Do you want to explore the set?'
   elsif choice == 'b'
     set_menu = false
   else

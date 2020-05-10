@@ -24,7 +24,7 @@ module Scraper
     arr_names
   end
 
-  def urls(doc)
+  def urls_array(doc)
     arr_urls = []
     urls_range = (0...imgsets_size(doc))
     urls_range.each { |i| arr_urls << doc.xpath('//figure//a')[i].attribute('href').value }

@@ -2,6 +2,7 @@
 require 'pry'
 require_relative '../lib/sets_creator'
 require_relative '../lib/imgsets'
+require_relative '../lib/scraper'
 
 class Nokogiri::HTML::Document
   include Scraper
@@ -23,8 +24,8 @@ def exit_scrap
   exit
 end
 
-def display(object, doc)
-  iterations = (0...doc.imgsets_size)
+def display(object)
+  iterations = (0...object.imgsets_size(object.doc))
 
   puts 'Image sets of LoC'.center(80, ' ')
   iterations.each do |i|
@@ -50,20 +51,20 @@ puts bar_start
 space
 puts 'Wait a minute. Scraping the Library of Congress...'
 space
-doc = parse_loc
-img_sets = SetsCreator.new(doc)
+img_sets = SetsCreator.new
 set_menu = true
 while set_menu == true
-  display(img_sets, doc)
+  display(img_sets)
   space
   puts '>> What do you want to do?'
   space
   puts '     a) Check a set b) Exit '
   choice = gets.chomp.downcase
   if choice == 'a'
-    puts ">> Write the index of the set (from 1 to #{doc.imgsets_size}):"
+    puts ">> Write the index of the set (from 1 to #{img_sets.imgsets_size(img_sets.doc)}):"
     choice = gets.chomp
-    # set_ if img_sets.validate(choice, doc)
+    set = ImgSet.new(choice)
+    binding.pry
   elsif choice == 'b'
     set_menu = false
   else

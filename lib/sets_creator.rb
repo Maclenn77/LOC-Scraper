@@ -4,13 +4,13 @@ class SetsCreator
   attr_reader :sets
   include Scraper
 
-  def initialize
-    @sets = set_names
-    @urls = set_urls
+  def initialize(doc)
+    @sets = doc.set_names
+    @urls = doc.set_urls
   end
 
-  def validate(choice)
-    if !choice.to_i.positive? or (choice.to_i > imgsets_size)
+  def validate(choice, doc)
+    if !choice.to_i.positive? or (choice.to_i > doc.imgsets_size)
       false
     else
       true

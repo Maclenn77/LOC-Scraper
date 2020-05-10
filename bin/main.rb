@@ -56,7 +56,7 @@ while set_menu == true
   puts '     a) Check a set b) Exit '
   choice = gets.chomp.downcase
   if choice == 'a'
-    puts ">> Write the index of the set (from 1 to #{create.imgsets_size}):"
+    puts ">> Write the index of the set (from 1 to #{img_sets.imgsets_size}):"
     choice = gets.chomp
     puts 'Great choice' if img_sets.validate(choice)
   elsif choice == 'b'

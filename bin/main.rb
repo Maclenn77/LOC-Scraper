@@ -33,7 +33,7 @@ puts bar_start
 space
 puts 'Scraping...'
 space
-# scrap_loc
+create = SetsCreator.new
 set_menu = true
 while set_menu == true
   # puts display_img_sets

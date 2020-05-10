@@ -1,10 +1,11 @@
 require_relative 'scraper'
 
 class SetsCreator
-
+  attr_reader :sets
   include Scraper
 
   def initialize
-    @sets = get_set_names
+    @sets = set_names
+    @urls = set_urls
   end
 end

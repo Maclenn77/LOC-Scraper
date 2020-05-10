@@ -3,7 +3,7 @@ require 'nokogiri'
 
 module Scraper
   # Take loc url and create an analizable document
-  GET_SET_NAMES = /(?<=[[:punct:]]\s).*/
+  FIND_SET_NAMES = /(?<=[[:punct:]]\s).*/.freeze
 
   def parse_loc
     html = open('https://www.loc.gov/free-to-use/').read
@@ -20,12 +20,19 @@ module Scraper
 
   # Returns the size of all image sets
   def imgsets_size
-    parse_loc.length
+    parse_loc.xpath('//strong').length
   end
 
-  def get_set_names
-    set_names = parse_loc.xpath('//strong').to_a
-    set_names = set_names.map { |i| GET_SET_NAMES.match(i).to_s }
-    set_names
+  def set_names
+    arr_names = parse_loc.xpath('//strong').to_a
+    arr_names = arr_names.map { |i| FIND_SET_NAMES.match(i).to_s }
+    arr_names
+  end
+
+  def set_urls
+    arr_urls = []
+    urls_range = (0...imgsets_size)
+    urls_range.each { |i| arr_urls << parse_loc.xpath('//figure//a')[i].attribute('href').value }
+    arr_urls
   end
 end

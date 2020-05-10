@@ -16,4 +16,9 @@ class SetsCreator
       true
     end
   end
+
+  def check_url(set)
+    url_index = set - 1
+    @urls[url_index]
+  end
 end

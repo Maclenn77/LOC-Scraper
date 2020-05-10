@@ -64,7 +64,7 @@ while set_menu == true
   if choice == 'a'
     puts ">> Write the index of the set (from 1 to #{doc.imgsets_size}):"
     choice = gets.chomp
-    puts 'Great choice' if img_sets.validate(choice, doc)
+    set_menu if img_sets.validate(choice, doc)
   elsif choice == 'b'
     set_menu = false
   else

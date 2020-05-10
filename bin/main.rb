@@ -50,8 +50,7 @@ puts bar_start
 space
 puts 'Wait a minute. Scraping the Library of Congress...'
 space
-html = open('https://www.loc.gov/free-to-use/').read
-doc = Nokogiri::HTML.parse(html)
+doc = parse_loc
 img_sets = SetsCreator.new(doc)
 set_menu = true
 while set_menu == true
@@ -64,7 +63,7 @@ while set_menu == true
   if choice == 'a'
     puts ">> Write the index of the set (from 1 to #{doc.imgsets_size}):"
     choice = gets.chomp
-    set_menu if img_sets.validate(choice, doc)
+    # set_ if img_sets.validate(choice, doc)
   elsif choice == 'b'
     set_menu = false
   else

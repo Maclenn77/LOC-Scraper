@@ -5,7 +5,13 @@ module Scraper
   # Take loc url and create an analizable document
   FIND_SET_NAMES = /(?<=[[:punct:]]\s).*/.freeze
 
-  # Take any url and create an analizable document
+  # Take LOC url and create an analizable document
+  def parse_loc
+    html = open('https://www.loc.gov/free-to-use/').read
+    doc = Nokogiri::HTML.parse(html)
+    doc
+  end
+
   def parsing(url)
     html = open(url).read
     parsed_data = Nokogiri::HTML.parse(html)

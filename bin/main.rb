@@ -3,7 +3,7 @@ require 'pry'
 require_relative '../lib/sets_creator'
 require_relative '../lib/imgsets'
 
-binding.pry
+# binding.pry
 
 # Output functions
 bar_start = '*'.center(80, '*')
@@ -21,6 +21,19 @@ def exit_scrap
   exit
 end
 
+def display_img_sets(object)
+  iterations = (0...object.imgsets_size)
+  iterations.each do |i|
+    num = i + 1
+    if i.even?
+      puts '-'.center(70, '-')
+      print num.to_s + '. ' + object.sets[i] + ' || '
+    else
+      print num.to_s + '. ' + object.sets[i] + "\n"
+    end
+  end
+end
+
 # Start user interface
 puts bar_start
 puts 'Library of Congress'.center(80, ' ')
@@ -31,25 +44,27 @@ puts 'IMAGE SETS'.center(80, ' ')
 space
 puts bar_start
 space
-puts 'Scraping...'
+puts 'Wait a minute. Scraping the Library of Congress...'
 space
 create = SetsCreator.new
 set_menu = true
 while set_menu == true
-  # puts display_img_sets
+  display_img_sets(create)
   space
   puts '>> What do you want to do?'
   space
   puts '     a) Check a set b) Exit '
   choice = gets.chomp.downcase
   if choice == 'a'
-    puts '>> Write the name of the set:'
+    puts ">> Write the index of the set (from 1 to #{create.imgsets_size}):"
     choice = gets.chomp
     # validate(choice)
     # choice.check
   elsif choice == 'b'
-    exit_scrap
+    set_menu = false
   else
     puts 'Invalid option. Try again.'
+    space
   end
 end
+exit_scrap

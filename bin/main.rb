@@ -21,7 +21,7 @@ def exit_scrap
   exit
 end
 
-def display_img_sets(object)
+def display(object)
   iterations = (0...object.imgsets_size)
   iterations.each do |i|
     num = i + 1
@@ -46,10 +46,10 @@ puts bar_start
 space
 puts 'Wait a minute. Scraping the Library of Congress...'
 space
-create = SetsCreator.new
+img_sets = SetsCreator.new
 set_menu = true
 while set_menu == true
-  display_img_sets(create)
+  display(img_sets)
   space
   puts '>> What do you want to do?'
   space
@@ -58,8 +58,7 @@ while set_menu == true
   if choice == 'a'
     puts ">> Write the index of the set (from 1 to #{create.imgsets_size}):"
     choice = gets.chomp
-    # validate(choice)
-    # choice.check
+    puts 'Great choice' if img_sets.validate(choice)
   elsif choice == 'b'
     set_menu = false
   else

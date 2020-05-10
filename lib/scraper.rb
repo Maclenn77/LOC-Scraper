@@ -12,8 +12,8 @@ module Scraper
   end
 
   # Take any url and create an analizable document
-  def parsing
-    html = open(@url).read
+  def parsing(url)
+    html = open(url).read
     parsed_data = Nokogiri::HTML.parse(html)
     parsed_data
   end

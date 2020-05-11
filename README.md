@@ -10,6 +10,10 @@ The web scraper will help anybody that wants to do queries and get URLs from the
 
 Source: Portal '[Free to Use and Reuse Sets](https://www.loc.gov/free-to-use/)'
 
+### Why Free to Use and Reuse Sets
+
+They are public domain images that can be reutilized by everyone. They don't have any tricky JavaScript code for banning scrapers.
+
 ### Options
 
 - Start: The program will scrap the webpage and take the name of the sets
@@ -31,73 +35,105 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+- Ruby
+- Nokogiri)
 
-```
-Give examples
-```
+Before running this web scraper, check if you have Ruby installed. You can do this with
+
+`$ ruby --version`
+
+If Ruby is not installed, you can install it with [these following instructions](https://www.theodinproject.com/courses/ruby-programming/lessons/installing-ruby-ruby-programming).
+
+You can install Nokogiri With
+
+`$ gem install nokogiri`
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+1. Download this repository. You can download a zip file and extract it or you can write in the command line:
 
-Say what the step will be
+`$ git remote add origin git@github.com:Maclenn77/Scraper.git`
 
-```
-Give the example
-```
+2. Run the logscraper file. You can also create an absolute path with:
 
-And repeat
+`$ sudo ln -s $PWD/logscraper /usr/local/bin/`
 
-```
-until finished
-```
+If there's any /usr/local/bin directory, you can create it with:
 
-End with an example of getting some data out of the system or using it for a little demo
+`$ sudo mkdir /usr/local/bin`
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+If you want to help in the development of this project, you can run tests with RSpec.
+
+`/Scraper$ rspec`
+
+If RSpec is not installed, you can install it easily with:
+
+`gem install rspec`
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
+RSpec check the following cases:
 
-```
-Give an example
-```
+#### Scraper
 
-### And coding style tests
+- #parsing returns a Nokogiri::HTML::Document object
+- #imgsets_size returns the number of sets
+- #names returns an array
+- #names returns an array with names of the sets, like 'Horses'
+- #urls_array returns an array
+- #urls_array returns an array with urls, like 'https://www.loc.gov/free-to-use/horses/'
 
-Explain what these tests test and why
+#### SetsCreator
 
-```
-Give an example
-```
+- #check_urls returns the url of a set
+- #check_urls doesn't return the url of a set if set is 0.
+- #check_set_size returns the number of images of a set
+- #check_set_size doesn't return a value if set is 0
 
-## Deployment
+#### ImgSet
 
-Add additional notes about how to deploy this on a live system
+- #display_description returns a string
+- #display_description returns description if index given
+- #display_description returns 'No image chosen' if index is 0
+- #display_url returns a string
+- #display_url returns an URL if index given
+- #display_url returns 'No image chosen' if index is 0
+- #display_url_nd_description returns a string
+- #display_url_nd_description returns 'No image chosen' if index is 0
+- #display_url_nd_description returns description and URL if index is given
+- #all_items returns a string
+- #all_items doesn't return 'No image chosen'
+- #all_items returns description and URL
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Ruby](https://www.ruby-lang.org/en/) - A programming language.
+* [Nokogiri](https://nokogiri.org/) - An HTML, XML, SAX, and Reader parser.
+* [OpenURI](https://ruby-doc.org/stdlib-2.6.3/libdoc/open-uri/rdoc/OpenURI.html) - A wrapper for Net::HTTP, Net::HTTPS and Net::FTP.
+* [RSpec](https://rspec.info/) - Behaviour Driven Development for Ruby.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Contribute to this project with:
 
-## Versioning
+- Code reviews
+- Open new issues
+- Suggest new features
+- Debugging
+- Share this project
+- If you want to collaborate with coding, contact the author for getting permission to this repository.
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+## Author
 
-## Authors
+👤 **Juan Paulo Perez Tejada**
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+- Github: [@Maclenn77](https://github.com/Maclenn77)
+- Twitter: [@srjuanpapas](https://twitter.com/srjuanpapas)
+- Linkedin: [Juan Paulo Perez Tejada](https://mx.linkedin.com/in/juanpaulopereztejada)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+Visit [my blog](https://developerz.software/)
 
 ## License
 
@@ -106,5 +142,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
-* Inspiration
-* etc

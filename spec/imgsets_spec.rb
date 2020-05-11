@@ -29,7 +29,7 @@ describe ImgSet do
       expect(img.display_url(0)).to include('No image chosen')
     end
 
-    it 'returns description if index given' do
+    it 'returns an URL if index given' do
       expect(img.display_url(1)).to include('http')
     end
   end

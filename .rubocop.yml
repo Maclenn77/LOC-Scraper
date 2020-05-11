@@ -53,5 +53,3 @@ Style/HashTransformValues:
   Enabled: false
 Style/CaseEquality:
   Enabled: false
-Security/Open:
-  Enable: false

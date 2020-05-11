@@ -1,5 +1,0 @@
-require'pry'
-require 'open-uri'
-require 'nokogiriopen("https://www.loc.gov/free-to-use/cats/"))
-
-binding.pry

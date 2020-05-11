@@ -1,3 +1,4 @@
+require_relative 'sets_creator'
 require_relative 'scraper'
 
 class ImgSet < SetsCreator
@@ -21,8 +22,6 @@ class ImgSet < SetsCreator
   def display_description(index)
     description = "#{BAR_STAR}\nDESCRIPTION: #{@elements[index][0]} \n#{BAR_STAR} \n"
     description
-  rescue NoMethodError
-    'Exit'
   end
 
   def display_url(index)

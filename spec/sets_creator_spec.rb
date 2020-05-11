@@ -20,11 +20,13 @@ describe SetsCreator do
 
   describe '#check_set_size' do
     it 'returns the number of images of a set' do
-      expect(img_sets.check_set_size(1)).to be(55)
+      doc = img_sets.parsing(img_sets.check_url(1))
+      expect(img_sets.check_set_size(doc)).to be(55)
     end
 
     it 'doesn\'t return a value if set is 0' do
-      expect(img_sets.check_set_size(0)).not_to be(55)
+      doc = img_sets.parsing(img_sets.check_url(0))
+      expect(img_sets.check_set_size(doc)).not_to be(55)
     end
   end
 end

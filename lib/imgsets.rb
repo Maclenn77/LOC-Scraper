@@ -4,6 +4,7 @@ require_relative 'scraper'
 class ImgSet < SetsCreator
   attr_accessor :name, :url, :total_images, :elements
   BAR_STAR = '*'.center(80, '*')
+  BAR_LINE = '-'.center(80, '-')
 
   def initialize(set, object)
     doc = parsing(object.check_url(set))
@@ -20,17 +21,17 @@ class ImgSet < SetsCreator
   end
 
   def display_description(index)
-    description = "#{BAR_STAR}\nDESCRIPTION: #{@elements[index][0]} \n#{BAR_STAR} \n"
+    description = "#{BAR_STAR}\nDESCRIPTION: #{@elements[index][0]}\n"
     description
   end
 
   def display_url(index)
-    url = "#{BAR_STAR}\nURL: #{@elements[index][1]} \n#{BAR_STAR} \n"
+    url = "#{BAR_LINE}\nURL: #{@elements[index][1]}\n#{BAR_STAR}\n"
     url
   end
 
   def display_url_nd_description(index)
-    description_plus_url = "#{display_description(index)} \n#{display_url(index)}"
+    description_plus_url = "#{display_description(index)}#{display_url(index)}"
     description_plus_url
   end
 

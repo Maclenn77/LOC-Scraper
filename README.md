@@ -1,13 +1,29 @@
 # Library of Congress - Scraper of Image Sets
 
-This web scraper was designed for the [Free to Use and Reuse Sets](https://www.loc.gov/free-to-use/),  a webpage from the Library of Congress.  The scraper takes the name and URL of each set of images and their items.
+This web scraper was designed for the [Free to Use and Reuse Sets](https://www.loc.gov/free-to-use/),  a webpage from the Library of Congress (LOC).  The scraper takes the name and URL of each set of images and their items.
 
 ## Free to Use and Reuse Sets
+
+The web scraper will help anybody that wants to do queries and get URLs from the LOC image sets and their items.
 
 > This page features items from the Library's digital collections that are free to use and reuse. The Library believes that this content is either in the public domain, has no known copyright, or has been cleared by the copyright owner for public use. Each set of content is based on a theme and is first featured on the Library's home page.
 
 Source: Portal '[Free to Use and Reuse Sets](https://www.loc.gov/free-to-use/)'
 
+### Options
+
+- Start: The program will scrap the webpage and take the name of the sets
+
+![screenshot](/screenshots/start.png)
+
+- Check a set: Review the set's URL and its total images.
+
+![screenshot](/screenshots/check_a_set.png)
+
+- Explore the set: Get the description and URL from an image or all the images
+
+![screenshot](/screenshots/explore_a_set_image.png)
+![screenshot](/screenshots/explore_all_images.png)
 
 ## Getting Started
 

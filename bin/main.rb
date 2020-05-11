@@ -10,7 +10,7 @@ end
 
 # Output functions
 def bar_start
-puts '*'.center(80, '*')
+  puts '*'.center(80, '*')
 end
 
 def space
@@ -55,48 +55,22 @@ end
 def check_image(option, set)
   choice = 1
   if option == 'a'
-    until choice.negative?
+    until choice.zero?
       puts "Enter a number (from 1 to #{set.total_images} or 'exit')"
       choice = gets.chomp.to_i
-      choice -= 1
-      bar_start
-      puts "DESCRIPTION: #{set.elements[choice][0]}"
-      bar_start
+      puts set.display_url_nd_description(choice)
     end
   elsif option == 'b'
-    until choice.negative?
-      puts "Enter a number (from 1 to #{set.total_images} or 'exit')"
-      choice = gets.chomp.to_i
-      choice -= 1
-      bar_start
-      puts ' ' * 10 + "- Url: #{set.elements[choice][1]}"
-      bar_start
-    end
-  elsif option == 'c'
-    until choice.negative?
-      puts "Enter a number (from 1 to #{set.total_images} or 'exit')"
-      choice = gets.chomp.to_i
-      choice -= 1
-      bar_start
-      puts "DESCRIPTION: #{set.elements[choice][0]}"
-      puts ' ' * 10 + "- Url: #{set.elements[choice][1]}"
-      bar_start
-    end
-  elsif option == 'd'
-    img_range = (1...set.total_images)
-    img_range.each do |i|
-      puts '--'.center(80, '-')
-      puts "Image #{i}. \n  Description: #{set.elements[i][0]} \n Url: #{set.elements[i][1]}"
-    end
+    puts set.all_items
   else
-    puts '#### Invalid option ####'.center(80, ' ')
+    '  WARNING: INVALID OPTION  '.center(80, '#')
   end
 end
 
 def explore_set(answer, set)
   if answer == 'y'
     puts '>> What do you want to do?'
-    puts 'a) Check a description b) Check an url c) Check description and url d) Check all images'.center(80, ' ')
+    puts 'a) Check description and url b) Check all images'.center(80, ' ')
     option = gets.chomp.downcase
     check_image(option, set)
   else

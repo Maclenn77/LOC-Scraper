@@ -13,7 +13,7 @@ describe SetsCreator do
 
   describe '#check_urls' do
     it 'returns the url of a set' do
-      expect(img_sets.check_url(1)).to eq('https://www.loc.gov/free-to-use/horses/')
+      expect(img_sets.check_url(2)).to eq('https://www.loc.gov/free-to-use/horses/')
     end
 
     it 'doesn\'t return the url of a set if set is 0' do

@@ -7,15 +7,12 @@ class Nokogiri::HTML::Document
 end
 
 describe SetsCreator do
-  subject(:html) { open('https://www.loc.gov/free-to-use/').read }
-  subject(:doc) { Nokogiri::HTML.parse(html) }
-  subject(:img_sets) { SetsCreator.new(doc) }
+  subject(:img_sets) { SetsCreator.new }
 
   describe '#check_urls' do
     it 'returns the url of a set' do
-      expect(img_sets.check_url(2)).to eq('https://www.loc.gov/free-to-use/horses/')
+      expect(img_sets.check_url(1)).to eq('https://www.loc.gov/free-to-use/horses/')
     end
-
     it 'doesn\'t return the url of a set if set is 0' do
       expect(img_sets.check_url(0)).not_to eq('https://www.loc.gov/free-to-use/horses/')
     end

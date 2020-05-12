@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-require 'pry'
 require_relative '../lib/sets_creator'
 require_relative '../lib/imgsets'
 require_relative '../lib/scraper'

@@ -2,7 +2,8 @@ require_relative 'sets_creator'
 require_relative 'scraper'
 
 class ImgSet < SetsCreator
-  attr_accessor :name, :url, :total_images, :elements
+  attr_reader :name, :url, :total_images
+  attr_writer :elements
   BAR_STAR = '*'.center(80, '*')
   BAR_LINE = '-'.center(80, '-')
 

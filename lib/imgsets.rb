@@ -21,16 +21,6 @@ class ImgSet < SetsCreator
     end
   end
 
-  def display_description(index)
-    description = "#{BAR_STAR}\nDESCRIPTION: #{@elements[index][0]}\n"
-    description
-  end
-
-  def display_url(index)
-    url = "#{BAR_LINE}\nURL: #{@elements[index][1]}\n#{BAR_STAR}\n"
-    url
-  end
-
   def display_url_nd_description(index)
     description_plus_url = "#{display_description(index)}#{display_url(index)}"
     description_plus_url
@@ -41,5 +31,17 @@ class ImgSet < SetsCreator
     img_range = (1...total_images)
     img_range.each { |i| display_items << ("Image #{i}. \n" + display_url_nd_description(i)) }
     display_items
+  end
+
+  private
+
+  def display_description(index)
+    description = "#{BAR_STAR}\nDESCRIPTION: #{@elements[index][0]}\n"
+    description
+  end
+
+  def display_url(index)
+    url = "#{BAR_LINE}\nURL: #{@elements[index][1]}\n#{BAR_STAR}\n"
+    url
   end
 end

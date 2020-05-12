@@ -18,6 +18,8 @@ module Scraper
     doc.xpath('//strong').length
   end
 
+  private
+
   def names(doc)
     arr_names = doc.xpath('//strong').to_a
     arr_names = arr_names.map { |i| FIND_SET_NAMES.match(i).to_s }
